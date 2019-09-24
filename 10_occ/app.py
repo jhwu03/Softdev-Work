@@ -1,3 +1,8 @@
+
+# Jionghao Wu
+# SoftDev1 pd2
+# K #10: Jinja Tuning
+# 2019-09-23
 from flask import Flask, render_template
 import csv
 import random
@@ -25,8 +30,8 @@ percentage = []
 
 @app.route("/occupyflaskst")
 def occupy_flask_st():
-    occupations = return_occupations()
-    randjob = randomOccupation()
+    occupations = return_occupations()#gets dictionary of occupation.cvs
+    randjob = randomOccupation()#gets random job
     for x in occupations:
         occupations[x] = str(occupations[x])
     return render_template("my_foist_template.html", randomOccupation = randjob, occupationsDict = occupations)
@@ -44,9 +49,9 @@ def return_occupations():
 
 def randomOccupation(): 
     for occupation in occupations:
-        jobClass.append(occupation)
-        percentage.append( float( occupations[ occupation])) #percentage should be float
-    return random.choices( jobClass, weights = percentage, k = 1)
+        jobClass.append(occupation)#adding to seperate lists
+        percentage.append( float( occupations[ occupation]))#adding to seperate lists #percentage should be float
+    return random.choices( jobClass, weights = percentage, k = 1)#picking random job
 
 if __name__ == "__main__":
     app.debug = True
