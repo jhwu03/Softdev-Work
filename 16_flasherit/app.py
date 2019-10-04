@@ -9,7 +9,6 @@ app = Flask(__name__)
 app.secret_key = "bob123"
 
 login = {'user': 'Bob', 'pass': '123'}
-errMsg = ""
 session = {}
 
 @app.route("/")
@@ -27,12 +26,13 @@ def root():
 @app.route("/auth", methods = ["POST"])
 def authenticate():
     if (request.form['username'] != login['user'] or request.form['password'] != login['pass']): #if  neither the username nor password is correct
-        global errMsg
         errMsg = getErrorMsg() #get the error message
+        flash("ERROR!")
+        flash(errMsg)
         return redirect(url_for("error")) #redirect to the link given by the error method, which is the error page
     else:
         session['user'] = request.form['username'] #create new session and store the username
-        flash("Congratulations!")
+        flash("Congratulations! Login Success!")
         return render_template( #load the welcome page
             "welcome.html",
             user = request.form['username'],
@@ -46,8 +46,7 @@ def logout(): #logs the user out from the welcome page
 @app.route("/error")
 def error(): #loads the error page
     return render_template(
-        "errorpage.html",
-        errorMsg = errMsg
+        "errorpage.html"
     )
 
 @app.route("/return")
