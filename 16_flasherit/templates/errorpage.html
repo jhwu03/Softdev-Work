@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block header %}
+  {% block title %}
+    <title> ERROR! </title>
+    {% endblock %}
+    <h1> Team Hotpot </h1>
+{% endblock %}
+{% block content %}
+  <h1> ERROR! </h1>
+  <h1> {{errorMsg}} </h1>
+  <form action = "/return">
+    <input type = "submit" name = "sub2" value = "Return to homepage">
+  </form>
+{% endblock %}
+{% block footer %}
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  {{super()}}
+{% endblock %}
