@@ -1,5 +1,5 @@
 #Clyde "Thluffy" Sinclair
-#SoftDev  
+#SoftDev
 #skeleton :: SQLITE3 BASICS
 #Oct 2019
 
@@ -17,12 +17,16 @@ c = db.cursor()               #facilitate db ops
 # < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
 
 
-command = ""          # test SQL stmt in sqlite3 shell, save as string
-c.execute(command)    # run SQL statement
+#command = "CREATE TABLE roster (name TEXT, userid INTEGER)"          # test SQL stmt in sqlite3 shell, save as string
+#c.execute(command)    # run SQL statement
+a = "bob"
+command = "INSERT INTO roster VALUES (\"bob\", 20);"
+c.execute(command)
+command = "SELECT * FROM roster;"
+c.execute(command)
+print(c.fetchall())
 
 #==========================================================
 
 db.commit() #save changes
 db.close()  #close database
-
-
