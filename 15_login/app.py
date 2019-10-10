@@ -1,5 +1,5 @@
 #Team Hotpot huangT wuJh
-#Tyler Huang
+#Jionghao Wu
 #SoftDev1 pd2
 #K15: Do I Know You?
 #2019-10-04
