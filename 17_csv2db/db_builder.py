@@ -1,7 +1,7 @@
-#Clyde "Thluffy" Sinclair
+#Jionghao Wu and Saad Bhuiyan
 #SoftDev
-#skeleton :: SQLITE3 BASICS
-#Oct 2019
+#K17 :: No Trouble
+#Oct 9 2019
 
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitate CSV I/O
@@ -14,17 +14,31 @@ c = db.cursor()               #facilitate db ops
 
 #==========================================================
 
-# < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
 
 
-#command = "CREATE TABLE roster (name TEXT, userid INTEGER)"          # test SQL stmt in sqlite3 shell, save as string
-#c.execute(command)    # run SQL statement
-a = "bob"
-command = "INSERT INTO roster VALUES (\"bob\", 20);"
-c.execute(command)
-command = "SELECT * FROM roster;"
-c.execute(command)
-print(c.fetchall())
+command = "CREATE TABLE students (name TEXT, age INTEGER, id INTEGER);"    #creates the table students with rows name, age and id
+c.execute(command)    # run SQL statement
+
+with open('students.csv') as file: #open csvfile
+    file = csv.DictReader(file) #read through file using DictReader
+    for row in file: # goes through each row of the file
+        command = "INSERT INTO students VALUES(" + "\"" + row["name"] + "\"" +", " + row["age"] + ", " + row["id"] + ");" # we can loop like this because the first row become fieldnames
+        c.execute(command) #run command
+
+# to test it in the terminal (thanks to Coyote's team)
+# command = "SELECT * FROM students;"
+# c.execute(command)
+# print(c.fetchall())
+
+
+command = "CREATE TABLE courses (code TEXT, mark INTEGER, id INTEGER);"    #creates the table courses with rows code, mark and id
+c.execute(command)    # run SQL statement
+
+with open('courses.csv') as file: #open csvfile
+    file = csv.DictReader(file) #read through file using DictReader
+    for row in file: # goes through each row of the file
+        command = "INSERT INTO courses VALUES(" + "\"" + row["code"] + "\"" +", " + row["mark"] + ", " + row["id"] + ");" # we can loop like this because the first row become fieldnames
+        c.execute(command) #run command
 
 #==========================================================
 
