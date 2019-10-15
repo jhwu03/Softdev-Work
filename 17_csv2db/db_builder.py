@@ -22,7 +22,7 @@ c.execute(command)    # run SQL statement
 with open('students.csv') as file: #open csvfile
     file = csv.DictReader(file) #read through file using DictReader
     for row in file: # goes through each row of the file
-        command = "INSERT INTO students VALUES(" + "\"" + row["name"] + "\"" +", " + row["age"] + ", " + row["id"] + ");" # we can loop like this because the first row become fieldnames
+        command = "INSERT INTO students VALUES(" + "'" + row["name"] + "'" +", " + row["age"] + ", " + row["id"] + ");" # we can loop like this because the first row become fieldnames
         c.execute(command) #run command
 
 # to test it in the terminal (thanks to Coyote's team)
@@ -37,9 +37,14 @@ c.execute(command)    # run SQL statement
 with open('courses.csv') as file: #open csvfile
     file = csv.DictReader(file) #read through file using DictReader
     for row in file: # goes through each row of the file
-        command = "INSERT INTO courses VALUES(" + "\"" + row["code"] + "\"" +", " + row["mark"] + ", " + row["id"] + ");" # we can loop like this because the first row become fieldnames
+        command = "INSERT INTO courses VALUES(" + "'" + row["code"] + "'" +", " + row["mark"] + ", " + row["id"] + ");" # we can loop like this because the first row become fieldnames
         c.execute(command) #run command
 
+q = "SELECT name, students.id, mark FROM students, courses WHERE students.id = courses.id"
+
+foo = c.execute(q)
+for bar in foo:
+    print bar
 #==========================================================
 
 db.commit() #save changes
