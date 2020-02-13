@@ -1,4 +1,4 @@
-// Jionghao Wu, Joseph Yusufov
+// Jionghao Wu
 // SoftDev Pd. 2
 // K #07: They lock us in the tower whenever we get caught
 // 2020-02-12
